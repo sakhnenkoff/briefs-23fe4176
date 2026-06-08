@@ -3,80 +3,157 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Opportunity Radar &middot; 2026-06-08</title>
+<meta name="color-scheme" content="dark">
+<title>Opportunity Radar &middot; Mon 08 Jun 2026</title>
 <style>
-  :root{--bg:#0e0f11;--surface:#16181c;--surface-2:#1c1f24;--line:#262a30;--text:#e8eaed;--muted:#9aa0a8;--faint:#6b7178;--accent:#3ba88f;--accent-soft:#1f3b35;--warn:#caa24a;--warn-soft:#332c16;--app:#3ba88f;--saas:#5b8def;--content:#c77dce;--other:#9aa0a8;--radius:14px}
-  *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;padding:max(env(safe-area-inset-top),16px) 0 64px;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:0 18px}
-  header{padding:8px 0 20px;border-bottom:1px solid var(--line);margin-bottom:8px}
-  .eyebrow{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
-  h1{font-size:27px;line-height:1.15;margin:8px 0 6px;letter-spacing:-.02em;font-weight:680}
-  .sub{color:var(--muted);font-size:14.5px;margin:0}
-  .meta{color:var(--faint);font-size:12.5px;margin-top:10px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;margin:18px 0}
-  .top{display:flex;align-items:flex-start;gap:12px;justify-content:space-between}
-  .rank{flex:none;width:26px;height:26px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--muted)}
-  .hook{font-size:18px;line-height:1.3;font-weight:650;letter-spacing:-.01em;margin:0;flex:1}
-  .score{flex:none;text-align:right}
-  .score b{font-size:19px;font-weight:720;color:var(--text)}
-  .score small{display:block;color:var(--faint);font-size:11px;margin-top:1px;font-variant-numeric:tabular-nums}
-  .tags{display:flex;flex-wrap:wrap;gap:7px;margin:13px 0 14px}
-  .tag{font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--surface-2)}
-  .tag.veh{border-color:transparent;color:#0e0f11;font-weight:600}
-  .veh.app{background:var(--app)}.veh.saas{background:var(--saas)}.veh.content{background:var(--content)}.veh.other{background:var(--other)}
-  .rows{display:grid;gap:9px;margin:2px 0 0}
-  .row{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:baseline}
-  .row .k{color:var(--faint);font-size:12px;text-transform:uppercase;letter-spacing:.05em;padding-top:1px}
-  .row .v{color:var(--text);font-size:14.5px}.row .v.muted{color:var(--muted)}
-  .premortem{margin-top:13px;padding:10px 12px;background:var(--warn-soft);border:1px solid #5a4d24;border-radius:10px;color:#f0e3b8;font-size:13.5px}
-  .premortem b{color:var(--warn);font-weight:650}
-  .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-  .btn{text-decoration:none;font-size:13.5px;font-weight:550;padding:8px 13px;border-radius:10px;border:1px solid var(--line);color:var(--text);background:var(--surface-2);transition:transform .08s ease}
-  .btn:active{transform:translateY(1px)}
-  .btn.primary{background:var(--accent-soft);border-color:#3a6f62;color:#d8f3ea}
-  .first{margin-top:13px;font-size:13.5px;color:var(--muted)}.first b{color:var(--accent);font-weight:600}
-  footer{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:12.5px}
-  @media (prefers-color-scheme:light){:root{--bg:#f7f8fa;--surface:#fff;--surface-2:#f0f2f5;--line:#e2e5ea;--text:#15171a;--muted:#5a616b;--faint:#8a9099;--accent-soft:#dcefe9;--warn-soft:#f7eecf}}
+  :root{
+    --bg:#0c0d0f; --bg-2:#111316; --line:#21242a; --line-2:#1a1c20;
+    --text:#e9eaec; --muted:#9a9da3; --faint:#62656b;
+    --accent:#56c596; --accent-dim:#2c5247; --risk:#cf9b54;
+    --meter-off:#23262c; --mono:ui-monospace,"SF Mono",SFMono-Regular,"JetBrains Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--text);
+    font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+    padding:max(env(safe-area-inset-top),34px) 0 80px;-webkit-font-smoothing:antialiased;
+    letter-spacing:-.003em;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 22px}
+
+  /* masthead */
+  .mast{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}
+  .kicker{font:600 11px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+  .date{font:500 12px/1 var(--mono);color:var(--faint);letter-spacing:.04em}
+  h1{font-size:34px;line-height:1.05;letter-spacing:-.035em;font-weight:700;margin:0 0 12px}
+  .dek{color:var(--muted);font-size:16px;line-height:1.5;margin:0;max-width:54ch}
+  .rule{height:1px;background:var(--line);margin:28px 0 6px;border:0}
+
+  /* entry */
+  .entry{padding:30px 0;border-top:1px solid var(--line-2)}
+  .entry:first-of-type{border-top:0}
+  .entry.lead .hook{font-size:25px}
+  .ehead{display:flex;gap:16px;align-items:flex-start}
+  .rank{font:600 15px/1 var(--mono);color:var(--accent);padding-top:6px;min-width:24px;letter-spacing:.02em}
+  .hook{font-size:21px;line-height:1.22;letter-spacing:-.02em;font-weight:660;margin:0;flex:1}
+  .final{flex:none;text-align:right;padding-top:2px}
+  .final b{font:700 22px/1 var(--mono);color:var(--text);letter-spacing:-.01em}
+  .final small{display:block;font:500 10.5px/1 var(--mono);color:var(--faint);margin-top:4px}
+
+  /* meta line */
+  .meta{display:flex;flex-wrap:wrap;gap:7px 14px;margin:14px 0 0;padding-left:40px}
+  .veh{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:5px;border:1px solid var(--line)}
+  .veh.app{color:#7fd9b4;border-color:#2c5247}
+  .veh.saas{color:#86b0f2;border-color:#2a3c5a}
+  .veh.content{color:#cf9bd6;border-color:#4a3550}
+  .veh.other{color:var(--muted)}
+  .switch{font:500 11px/1.8 var(--mono);color:var(--faint);letter-spacing:.02em}
+
+  /* score meters */
+  .meters{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px;padding-left:40px}
+  .m{display:flex;flex-direction:column;gap:5px}
+  .m .lab{font:600 9.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  .bar{display:flex;gap:3px}
+  .seg{height:4px;flex:1;border-radius:1px;background:var(--meter-off)}
+  .seg.on{background:var(--accent)}
+  .m.pen .seg.on{background:var(--risk)}
+
+  /* body rows: hanging editorial labels */
+  .rows{margin:20px 0 0;padding-left:40px}
+  .row{display:grid;grid-template-columns:74px 1fr;gap:14px;padding:7px 0}
+  .row .k{font:600 10.5px/1.6 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+  .row .v{font-size:15px;line-height:1.55;color:var(--text)}
+  .row .v.muted{color:var(--muted)}
+
+  .risknote{margin:16px 0 0 40px;padding-left:14px;border-left:2px solid var(--risk);color:#d8bd96;font-size:14px;line-height:1.5}
+  .risknote .k{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--risk);display:block;margin-bottom:4px}
+
+  .act{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:18px 0 0 40px}
+  .move{font-size:14px;color:var(--muted);flex:1;min-width:200px;line-height:1.5}
+  .move b{color:var(--accent);font-weight:600}
+  .src{font:600 13px/1 var(--mono);text-decoration:none;color:var(--text);background:var(--bg-2);border:1px solid var(--line);padding:9px 14px;border-radius:8px;white-space:nowrap;transition:border-color .15s}
+  .src:hover{border-color:var(--accent-dim)}
+  .src:active{transform:translateY(1px)}
+
+  footer{margin:44px 0 0;padding-top:20px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;line-height:1.6}
+
+  @media (max-width:560px){
+    .meta,.meters,.rows{padding-left:0}
+    .risknote,.act{margin-left:0}
+    .meters{grid-template-columns:repeat(2,1fr);gap:14px}
+    .row{grid-template-columns:64px 1fr;gap:10px}
+    h1{font-size:29px}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .entry{animation:rise .5s cubic-bezier(.16,1,.3,1) both}
+    @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="eyebrow">Opportunity Radar</div>
-    <h1>Wedge-finder briefing</h1>
-    <p class="sub">Niche workflows with real pain, weak incumbents, and a fast-native-iOS + AI-agent wedge.</p>
-    <div class="meta">Generated 2026-06-08 &amp;middot; saturation penalised, novelty budget enforced</div>
-  </header>
-  <article class="card">
-    <div class="top"><div class="rank">1</div><h2 class="hook">Multi-keeper beekeepers stuck on a shared Google Sheet</h2><div class="score"><b>19</b><small>26 &minus; 7</small></div></div>
-    <div class="tags"><span class="tag veh app">app-shippable</span><span class="tag">pain 5</span><span class="tag">edge 5</span><span class="tag">$ 3</span><span class="tag">weak-incumbent 4</span><span class="tag">switching: low</span></div>
-    <div class="rows"><div class="row"><span class="k">Why now</span><span class="v">Hive apps store data locally only — no cross-account sync, so co-keepers and clubs fall back to spreadsheets.</span></div><div class="row"><span class="k">Why you</span><span class="v">Voice-to-log while gloved in the field (&quot;queen seen, 6 frames brood, treated mites&quot;) parsed by an agent into structured fields — the AI angle a normal dev skips.</span></div><div class="row"><span class="k">Wedge</span><span class="v">Shared apiary with real-time synced hive cards + voice logging. 1–2wk MVP.</span></div><div class="row"><span class="k">Saturation</span><span class="v muted">HiveTracks, BeePlus, Apiary Book — but the multi-user sync gap is explicitly unmet.</span></div></div>
-    <div class="premortem"><b>Pre-mortem:</b> shared-apiary segment may be too small; solo hobby keepers are happy with free local apps.</div><div class="first"><b>First move:</b> DM 10 keepers from the thread with a mock of the shared hive card.</div><div class="actions"><a class="btn primary" href="https://www.reddit.com/r/Beekeeping/comments/18uj24j/is_there_an_apiary_record_app_that_allows/">Reddit thread &rarr;</a></div>
+  <div class="mast">
+    <span class="kicker">Opportunity Radar</span>
+    <span class="date">Mon 08 Jun 2026</span>
+  </div>
+  <h1>Wedge-finder briefing</h1>
+  <p class="dek">Niche workflows with real pain, weak incumbents, and a fast-native-iOS plus AI-agent wedge. Saturation penalised, novelty enforced.</p>
+  <hr class="rule">
+  <article class="entry lead">
+    <div class="ehead">
+      <div class="rank">1</div>
+      <h2 class="hook">Multi-keeper beekeepers stuck on a shared Google Sheet</h2>
+      <div class="final"><b>19</b><small>26 pos &middot; 7 pen</small></div>
+    </div>
+    <div class="meta"><span class="veh app">app-shippable</span><span class="switch">switching: low</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div></div>
+    <div class="rows"><div class="row"><div class="k">why now</div><div class="v">Hive apps store data locally only - no cross-account sync, so co-keepers and clubs fall back to spreadsheets.</div></div><div class="row"><div class="k">why you</div><div class="v">Voice-to-log while gloved in the field (&quot;queen seen, 6 frames brood, treated mites&quot;) parsed by an agent into structured fields - the AI angle a normal dev skips.</div></div><div class="row"><div class="k">wedge</div><div class="v">Shared apiary with real-time synced hive cards + voice logging. 1-2wk MVP.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">HiveTracks, BeePlus, Apiary Book - but the multi-user sync gap is explicitly unmet.</div></div></div>
+    <div class="risknote"><span class="k">Pre-mortem</span>shared-apiary segment may be too small; solo hobby keepers are happy with free local apps.</div><div class="act"><div class="move"><b>First move.</b> DM 10 keepers from the thread with a mock of the shared hive card.</div><a class="src" href="https://www.reddit.com/r/Beekeeping/comments/18uj24j/is_there_an_apiary_record_app_that_allows/">Reddit thread &rsaquo;</a></div>
   </article>
-  <article class="card">
-    <div class="top"><div class="rank">2</div><h2 class="hook">Small horse barns coordinating care via WhatsApp polls</h2><div class="score"><b>17</b><small>25 &minus; 8</small></div></div>
-    <div class="tags"><span class="tag veh app">app-shippable</span><span class="tag">pain 4</span><span class="tag">edge 4</span><span class="tag">$ 4</span><span class="tag">weak-incumbent 4</span><span class="tag">switching: med</span></div>
-    <div class="rows"><div class="row"><span class="k">Why now</span><span class="v">Barn software targets big show/billing barns; small barns run blanketing, turnout and feed coordination through ad-hoc WhatsApp polls.</span></div><div class="row"><span class="k">Why you</span><span class="v">Weather-aware daily care board + an agent that drafts the daily blanket recommendation from the forecast.</span></div><div class="row"><span class="k">Wedge</span><span class="v">&quot;Blanket/turnout board&quot; — weather-aware checklist, one-tap status. 1–2wk MVP.</span></div><div class="row"><span class="k">Saturation</span><span class="v muted">BarnManager, Stable Secretary, HorseLinc — all enterprise/show-barn skewed.</span></div></div>
-    <div class="premortem"><b>Pre-mortem:</b> one holdout keeps the group on WhatsApp — classic coordination cold-start.</div><div class="first"><b>First move:</b> post a mock board in 2 boarder subs, gauge &quot;would you switch&quot; replies.</div><div class="actions"><a class="btn primary" href="https://www.reddit.com/r/Equestrian/comments/1sb5utm/question_for_boarders_barn_managers/">Reddit thread &rarr;</a></div>
+  <article class="entry">
+    <div class="ehead">
+      <div class="rank">2</div>
+      <h2 class="hook">Small horse barns coordinating care via WhatsApp polls</h2>
+      <div class="final"><b>17</b><small>25 pos &middot; 8 pen</small></div>
+    </div>
+    <div class="meta"><span class="veh app">app-shippable</span><span class="switch">switching: med</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div></div>
+    <div class="rows"><div class="row"><div class="k">why now</div><div class="v">Barn software targets big show/billing barns; small barns run blanketing, turnout and feed coordination through ad-hoc WhatsApp polls.</div></div><div class="row"><div class="k">why you</div><div class="v">Weather-aware daily care board + an agent that drafts the daily blanket recommendation from the forecast.</div></div><div class="row"><div class="k">wedge</div><div class="v">&quot;Blanket/turnout board&quot; - weather-aware checklist, one-tap status. 1-2wk MVP.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">BarnManager, Stable Secretary, HorseLinc - all enterprise/show-barn skewed.</div></div></div>
+    <div class="risknote"><span class="k">Pre-mortem</span>one holdout keeps the group on WhatsApp - classic coordination cold-start.</div><div class="act"><div class="move"><b>First move.</b> post a mock board in 2 boarder subs, gauge &quot;would you switch&quot; replies.</div><a class="src" href="https://www.reddit.com/r/Equestrian/comments/1sb5utm/question_for_boarders_barn_managers/">Reddit thread &rsaquo;</a></div>
   </article>
-  <article class="card">
-    <div class="top"><div class="rank">3</div><h2 class="hook">Reptile breeders tracking clutches &amp; genetics across 4 spreadsheets</h2><div class="score"><b>16</b><small>25 &minus; 9</small></div></div>
-    <div class="tags"><span class="tag veh app">app-shippable</span><span class="tag">pain 5</span><span class="tag">edge 4</span><span class="tag">$ 3</span><span class="tag">weak-incumbent 4</span><span class="tag">switching: med-high</span></div>
-    <div class="rows"><div class="row"><span class="k">Why now</span><span class="v">Serious ball-python/gecko breeders reject existing apps as too pet-owner-focused; track breeders, clutches, eggs and morph genetics across multiple sheets.</span></div><div class="row"><span class="k">Why you</span><span class="v">Morph-odds prediction from parent genetics (Punnett-style agent calc) + photo feeding/shed log — real AI value, not a wrapper.</span></div><div class="row"><span class="k">Wedge</span><span class="v">Pairing/clutch tracker + genetics calculator. MVP shippable.</span></div><div class="row"><span class="k">Saturation</span><span class="v muted">Husbandry.Pro, SnakeKeeper, ReptiCloud — breeders still default to sheets for the projects/genetics layer.</span></div></div>
-    <div class="premortem"><b>Pre-mortem:</b> MorphMarket (where breeders already sell) is building native record-keeping and owns the channel.</div><div class="first"><b>First move:</b> scrape the MorphMarket record-keeping thread, cluster the must-have fields.</div><div class="actions"><a class="btn primary" href="https://community.morphmarket.com/t/what-does-everybody-use-for-record-keeping/8836">MorphMarket thread &rarr;</a></div>
+  <article class="entry">
+    <div class="ehead">
+      <div class="rank">3</div>
+      <h2 class="hook">Reptile breeders tracking clutches &amp; genetics across 4 spreadsheets</h2>
+      <div class="final"><b>16</b><small>25 pos &middot; 9 pen</small></div>
+    </div>
+    <div class="meta"><span class="veh app">app-shippable</span><span class="switch">switching: med-high</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div></div>
+    <div class="rows"><div class="row"><div class="k">why now</div><div class="v">Serious ball-python/gecko breeders reject existing apps as too pet-owner-focused; track breeders, clutches, eggs and morph genetics across multiple sheets.</div></div><div class="row"><div class="k">why you</div><div class="v">Morph-odds prediction from parent genetics (Punnett-style agent calc) + photo feeding/shed log - real AI value, not a wrapper.</div></div><div class="row"><div class="k">wedge</div><div class="v">Pairing/clutch tracker + genetics calculator. MVP shippable.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">Husbandry.Pro, SnakeKeeper, ReptiCloud - breeders still default to sheets for the projects/genetics layer.</div></div></div>
+    <div class="risknote"><span class="k">Pre-mortem</span>MorphMarket (where breeders already sell) is building native record-keeping and owns the channel.</div><div class="act"><div class="move"><b>First move.</b> scrape the MorphMarket record-keeping thread, cluster the must-have fields.</div><a class="src" href="https://community.morphmarket.com/t/what-does-everybody-use-for-record-keeping/8836">MorphMarket thread &rsaquo;</a></div>
   </article>
-  <article class="card">
-    <div class="top"><div class="rank">4</div><h2 class="hook">Doulas tracking due-dates &amp; on-call life in spreadsheets</h2><div class="score"><b>15</b><small>23 &minus; 8</small></div></div>
-    <div class="tags"><span class="tag veh app">app-shippable</span><span class="tag veh saas">micro-SaaS</span><span class="tag">pain 4</span><span class="tag">edge 4</span><span class="tag">$ 3</span><span class="tag">weak-incumbent 4</span><span class="tag">switching: low-med</span></div>
-    <div class="rows"><div class="row"><span class="k">Why now</span><span class="v">Generic CRMs (HoneyBook) don&#x27;t model a pregnancy timeline or on-call windows, so doulas track EDDs + birth outcomes in sheets.</span></div><div class="row"><span class="k">Why you</span><span class="v">EDD-centric timeline + an agent that summarizes birth notes from voice memos after a long labor.</span></div><div class="row"><span class="k">Wedge</span><span class="v">Due-date countdown + on-call calendar + contract status. Low-friction MVP.</span></div><div class="row"><span class="k">Saturation</span><span class="v muted">HoneyBook, Doualdo, Omnify — mostly repurposed generic CRMs, not EDD-native.</span></div></div>
-    <div class="premortem"><b>Pre-mortem:</b> small, price-sensitive population; HoneyBook brand + affiliate network has mindshare.</div><div class="first"><b>First move:</b> DM 10 doulas from the thread, ask what their sheet columns are.</div><div class="actions"><a class="btn primary" href="https://www.reddit.com/r/doulas/comments/1nr7mux/doulas_how_do_you_track_your_clients/">Reddit thread &rarr;</a></div>
+  <article class="entry">
+    <div class="ehead">
+      <div class="rank">4</div>
+      <h2 class="hook">Doulas tracking due-dates &amp; on-call life in spreadsheets</h2>
+      <div class="final"><b>15</b><small>23 pos &middot; 8 pen</small></div>
+    </div>
+    <div class="meta"><span class="veh app">app-shippable</span><span class="veh saas">micro-saas</span><span class="switch">switching: low-med</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div></div>
+    <div class="rows"><div class="row"><div class="k">why now</div><div class="v">Generic CRMs (HoneyBook) don&#x27;t model a pregnancy timeline or on-call windows, so doulas track EDDs + birth outcomes in sheets.</div></div><div class="row"><div class="k">why you</div><div class="v">EDD-centric timeline + an agent that summarizes birth notes from voice memos after a long labor.</div></div><div class="row"><div class="k">wedge</div><div class="v">Due-date countdown + on-call calendar + contract status. Low-friction MVP.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">HoneyBook, Doualdo, Omnify - mostly repurposed generic CRMs, not EDD-native.</div></div></div>
+    <div class="risknote"><span class="k">Pre-mortem</span>small, price-sensitive population; HoneyBook brand + affiliate network has mindshare.</div><div class="act"><div class="move"><b>First move.</b> DM 10 doulas from the thread, ask what their sheet columns are.</div><a class="src" href="https://www.reddit.com/r/doulas/comments/1nr7mux/doulas_how_do_you_track_your_clients/">Reddit thread &rsaquo;</a></div>
   </article>
-  <article class="card">
-    <div class="top"><div class="rank">5</div><h2 class="hook">Microbakers re-typing WhatsApp DM orders into a COGS sheet</h2><div class="score"><b>14</b><small>24 &minus; 10</small></div></div>
-    <div class="tags"><span class="tag veh other">other</span><span class="tag veh app">app-shippable</span><span class="tag">pain 4</span><span class="tag">edge 4</span><span class="tag">$ 4</span><span class="tag">weak-incumbent 3</span><span class="tag">switching: med</span></div>
-    <div class="rows"><div class="row"><span class="k">Why now</span><span class="v">Home/cottage bakers take every custom order via WhatsApp/Insta DM, then manually re-type into a costing spreadsheet — intake and pricing live in two places.</span></div><div class="row"><span class="k">Why you</span><span class="v">Agent that ingests forwarded WhatsApp order messages into a structured order, auto-priced from saved COGS recipes. Meets them where they already are — no storefront to adopt.</span></div><div class="row"><span class="k">Wedge</span><span class="v">WhatsApp-order into structured + priced order. MVP = the parse step alone.</span></div><div class="row"><span class="k">Saturation</span><span class="v muted">Bakesy, Hotplate, CakeBoss, Castiron — most saturated here; only the DM-parse step is universally manual.</span></div></div>
-    <div class="premortem"><b>Pre-mortem:</b> crowded — incumbents can bolt on AI-DM-parsing faster than a newcomer wins distribution.</div><div class="first"><b>First move:</b> build the parse-a-pasted-order demo, post it in one cottage-food sub.</div><div class="actions"><a class="btn primary" href="https://www.reddit.com/r/smallbusiness/comments/1l29j6o/">Reddit thread &rarr;</a></div>
+  <article class="entry">
+    <div class="ehead">
+      <div class="rank">5</div>
+      <h2 class="hook">Microbakers re-typing WhatsApp DM orders into a COGS sheet</h2>
+      <div class="final"><b>14</b><small>24 pos &middot; 10 pen</small></div>
+    </div>
+    <div class="meta"><span class="veh other">other</span><span class="veh app">app-shippable</span><span class="switch">switching: med</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div></div>
+    <div class="rows"><div class="row"><div class="k">why now</div><div class="v">Home/cottage bakers take every custom order via WhatsApp/Insta DM, then manually re-type into a costing spreadsheet - intake and pricing live in two places.</div></div><div class="row"><div class="k">why you</div><div class="v">Agent that ingests forwarded WhatsApp order messages into a structured order, auto-priced from saved COGS recipes. Meets them where they already are - no storefront to adopt.</div></div><div class="row"><div class="k">wedge</div><div class="v">WhatsApp-order into structured + priced order. MVP = the parse step alone.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">Bakesy, Hotplate, CakeBoss, Castiron - most saturated here; only the DM-parse step is universally manual.</div></div></div>
+    <div class="risknote"><span class="k">Pre-mortem</span>crowded - incumbents can bolt on AI-DM-parsing faster than a newcomer wins distribution.</div><div class="act"><div class="move"><b>First move.</b> build the parse-a-pasted-order demo, post it in one cottage-food sub.</div><a class="src" href="https://www.reddit.com/r/smallbusiness/comments/1l29j6o/">Reddit thread &rsaquo;</a></div>
   </article>
   <footer>Floor gate: each cleared both (pain × your-edge) and ($ × weak-incumbent). The big round-1 markets (MyFitnessPal, Mint, notes) were auto-rejected as saturated. Reddit evidence is search-snippet level (Reddit blocks scraping); other sources verbatim.</footer>
 </div>
