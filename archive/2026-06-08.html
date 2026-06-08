@@ -3,87 +3,67 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <title>Opportunity Radar &middot; Mon 08 Jun 2026</title>
 <style>
   :root{
-    --bg:#0c0d0f; --bg-2:#111316; --line:#21242a; --line-2:#1a1c20;
-    --text:#e9eaec; --muted:#9a9da3; --faint:#62656b;
-    --accent:#56c596; --accent-dim:#2c5247; --risk:#cf9b54;
-    --meter-off:#23262c; --mono:ui-monospace,"SF Mono",SFMono-Regular,"JetBrains Mono",Menlo,monospace;
-  }
+    --bg:#f6f5f2;--panel:#fbfaf8;--line:#e3e1db;--line-2:#eceae4;
+    --text:#1b1d20;--muted:#4b4f56;--faint:#73777e;--off:#d2cfc7;
+    --accent:#3f4e5e;--accent-soft:#bcc5cf;--risk:#8a5d3f;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:"Space Grotesk",-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif;}
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--bg);color:var(--text);
-    font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
-    padding:max(env(safe-area-inset-top),34px) 0 80px;-webkit-font-smoothing:antialiased;
-    letter-spacing:-.003em;
-  }
-  .wrap{max-width:680px;margin:0 auto;padding:0 22px}
-
-  /* masthead */
-  .mast{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}
-  .kicker{font:600 11px/1 var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
-  .date{font:500 12px/1 var(--mono);color:var(--faint);letter-spacing:.04em}
-  h1{font-size:34px;line-height:1.05;letter-spacing:-.035em;font-weight:700;margin:0 0 12px}
-  .dek{color:var(--muted);font-size:16px;line-height:1.5;margin:0;max-width:54ch}
-  .rule{height:1px;background:var(--line);margin:28px 0 6px;border:0}
-
-  /* entry */
-  .entry{padding:30px 0;border-top:1px solid var(--line-2)}
-  .entry:first-of-type{border-top:0}
-  .entry.lead .hook{font-size:25px}
-  .ehead{display:flex;gap:16px;align-items:flex-start}
-  .rank{font:600 15px/1 var(--mono);color:var(--accent);padding-top:6px;min-width:24px;letter-spacing:.02em}
-  .hook{font-size:21px;line-height:1.22;letter-spacing:-.02em;font-weight:660;margin:0;flex:1}
-  .final{flex:none;text-align:right;padding-top:2px}
-  .final b{font:700 22px/1 var(--mono);color:var(--text);letter-spacing:-.01em}
-  .final small{display:block;font:500 10.5px/1 var(--mono);color:var(--faint);margin-top:4px}
-
-  /* meta line */
-  .meta{display:flex;flex-wrap:wrap;gap:7px 14px;margin:14px 0 0;padding-left:40px}
-  .veh{font:600 10.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:5px;border:1px solid var(--line)}
-  .veh.app{color:#7fd9b4;border-color:#2c5247}
-  .veh.saas{color:#86b0f2;border-color:#2a3c5a}
-  .veh.content{color:#cf9bd6;border-color:#4a3550}
-  .veh.other{color:var(--muted)}
-  .switch{font:500 11px/1.8 var(--mono);color:var(--faint);letter-spacing:.02em}
-
-  /* score meters */
-  .meters{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 4px;padding-left:40px}
-  .m{display:flex;flex-direction:column;gap:5px}
-  .m .lab{font:600 9.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-  .bar{display:flex;gap:3px}
-  .seg{height:4px;flex:1;border-radius:1px;background:var(--meter-off)}
-  .seg.on{background:var(--accent)}
-  .m.pen .seg.on{background:var(--risk)}
-
-  /* body rows: hanging editorial labels */
-  .rows{margin:20px 0 0;padding-left:40px}
-  .row{display:grid;grid-template-columns:74px 1fr;gap:14px;padding:7px 0}
-  .row .k{font:600 10.5px/1.6 var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
-  .row .v{font-size:15px;line-height:1.55;color:var(--text)}
-  .row .v.muted{color:var(--muted)}
-
-  .risknote{margin:16px 0 0 40px;padding-left:14px;border-left:2px solid var(--risk);color:#d8bd96;font-size:14px;line-height:1.5}
-  .risknote .k{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--risk);display:block;margin-bottom:4px}
-
-  .act{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:18px 0 0 40px}
-  .move{font-size:14px;color:var(--muted);flex:1;min-width:200px;line-height:1.5}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);
+    font-size:16px;line-height:1.62;padding:max(env(safe-area-inset-top),48px) 0 120px;
+    -webkit-font-smoothing:antialiased;letter-spacing:-.005em;}
+  .wrap{max-width:660px;margin:0 auto;padding:0 26px}
+  .mast{margin-bottom:64px}
+  .kicker{font:600 11px/1 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--accent)}
+  .date{display:block;font:500 12px/1 var(--mono);color:var(--faint);letter-spacing:.05em;margin-top:18px}
+  h1{font-size:40px;line-height:1.04;letter-spacing:-.035em;font-weight:600;margin:22px 0 18px}
+  .dek{color:var(--muted);font-size:16.5px;line-height:1.6;margin:0;max-width:50ch;font-weight:400}
+  .entry{padding:58px 0;border-top:1px solid var(--line)}
+  .entry:first-of-type{border-top:0;padding-top:8px}
+  .entry.lead .hook{font-size:27px}
+  .top{display:flex;gap:18px;align-items:flex-start;margin-bottom:30px}
+  .rank{font:600 14px/1 var(--mono);color:var(--accent);padding-top:9px;min-width:22px}
+  .hook{font-size:22px;line-height:1.26;letter-spacing:-.022em;font-weight:600;margin:0;flex:1}
+  .score{flex:none;text-align:right;padding-top:4px}
+  .score b{font:600 24px/1 var(--mono);letter-spacing:-.02em}
+  .score small{display:block;font:500 10.5px/1 var(--mono);color:var(--faint);margin-top:6px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px;padding-left:40px}
+  .tag{font:600 10px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:6px;border:1px solid var(--line);color:var(--muted);background:var(--panel)}
+  .tag.fun{color:var(--accent);border-color:var(--accent-soft);background:#eef1f4}
+  .meters{display:grid;grid-template-columns:repeat(2,1fr);gap:16px 28px;margin:0 0 30px;padding-left:40px}
+  .m{display:flex;flex-direction:column;gap:8px}
+  .m .lab{font:600 9.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+  .bar{display:flex;gap:4px}
+  .bar i{height:3px;flex:1;border-radius:2px;background:var(--off)}
+  .bar i.on{background:var(--accent)}
+  .rows{padding-left:40px}
+  .row{display:grid;grid-template-columns:78px 1fr;gap:18px;padding:11px 0}
+  .row .k{font:600 10px/1.7 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+  .row .v{font-size:15.5px;line-height:1.6}
+  .row.fun .v{color:var(--accent);font-weight:500}
+  .risk{margin:24px 0 0 40px;padding-left:16px;border-left:2px solid var(--risk);color:#7c5436;font-size:14.5px;line-height:1.55}
+  .risk .k{font:600 9.5px/1 var(--mono);letter-spacing:.11em;text-transform:uppercase;color:var(--risk);display:block;margin-bottom:7px}
+  .move{margin:26px 0 0 40px;font-size:14.5px;color:var(--muted);line-height:1.6}
   .move b{color:var(--accent);font-weight:600}
-  .src{font:600 13px/1 var(--mono);text-decoration:none;color:var(--text);background:var(--bg-2);border:1px solid var(--line);padding:9px 14px;border-radius:8px;white-space:nowrap;transition:border-color .15s}
-  .src:hover{border-color:var(--accent-dim)}
-  .src:active{transform:translateY(1px)}
-
-  footer{margin:44px 0 0;padding-top:20px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;line-height:1.6}
-
-  @media (max-width:560px){
-    .meta,.meters,.rows{padding-left:0}
-    .risknote,.act{margin-left:0}
-    .meters{grid-template-columns:repeat(2,1fr);gap:14px}
-    .row{grid-template-columns:64px 1fr;gap:10px}
-    h1{font-size:29px}
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0 40px}
+  .links a{font:600 12.5px/1 var(--mono);text-decoration:none;color:var(--text);background:var(--panel);border:1px solid var(--off);padding:10px 14px;border-radius:9px;transition:border-color .15s}
+  .links a:hover{border-color:var(--accent-soft)}
+  .links a:active{transform:translateY(1px)}
+  footer{margin:80px 0 0;padding-top:26px;border-top:1px solid var(--line);color:var(--faint);font-size:13px;line-height:1.65;max-width:54ch}
+  @media(max-width:560px){
+    .tags,.meters,.rows{padding-left:0}
+    .risk,.move,.links{margin-left:0}
+    .row{grid-template-columns:68px 1fr;gap:12px}
+    h1{font-size:33px}
+    .meters{gap:14px 20px}
   }
   @media (prefers-reduced-motion:no-preference){
     .entry{animation:rise .5s cubic-bezier(.16,1,.3,1) both}
@@ -95,67 +75,66 @@
 <div class="wrap">
   <div class="mast">
     <span class="kicker">Opportunity Radar</span>
+    <h1>Wedge-finder briefing</h1>
+    <p class="dek">Problems worth building, gated on whether they are fun to solve before they are scored on pain, money, and a weak incumbent.</p>
     <span class="date">Mon 08 Jun 2026</span>
   </div>
-  <h1>Wedge-finder briefing</h1>
-  <p class="dek">Problems Matvii would enjoy solving that also have real pain, a weak incumbent, and a fast-native-iOS plus AI-agent wedge. Fun is the gate, viability ranks.</p>
-  <hr class="rule">
   <article class="entry lead">
-    <div class="ehead">
+    <div class="top">
       <div class="rank">1</div>
       <h2 class="hook">iOS devs building MCP-powered apps have no native iOS client - everyone&#x27;s either stuck on desktop or writing raw Swift from scratch with no reference implementation</h2>
-      <div class="final"><b>24</b><small>28 pos &middot; 4 pen</small></div>
+      <div class="score"><b>24</b><small>28 - 4</small></div>
     </div>
-    <div class="meta"><span class="veh app">app-shippable</span><span class="switch">switching: low</span></div>
-    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div></div>
-    <div class="rows"><div class="row"><div class="k">fun</div><div class="v">Implementing MCP in Swift natively - tool-calling, session management, streaming, server discovery - is exactly the agent architecture work Matvii loves and there is no template to copy.</div></div><div class="row"><div class="k">why now</div><div class="v">MCP exploded as the standard agent protocol in 2025 and every client is desktop-only or server-side - mobile is a complete blind spot while the ecosystem is still forming.</div></div><div class="row"><div class="k">why you</div><div class="v">MCP fluency + iOS native speed + agent architecture knowledge = ship the canonical iOS MCP client before any framework player notices mobile is missing.</div></div><div class="row"><div class="k">wedge</div><div class="v">SwiftUI app that connects to any MCP server over local network or HTTPS, lists available tools, and lets you invoke them with structured inputs - no Claude Desktop parity needed.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">Claude Desktop (macOS only), Cursor (desktop IDE only), MCP Inspector (web/CLI only)</div></div></div>
-    <div class="risknote"><span class="k">Pre-mortem</span>MCP gets superseded by a better protocol or Apple ships native agent tool-calling that makes the whole transport layer irrelevant.</div><div class="act"><div class="move"><b>First move.</b> Build a minimal Swift MCP client this week using the Swift MCP SDK, demo it on iPhone calling a local tool server, post the video to your content channel.</div><a class="src" href="https://jamesrochabrun.medium.com/creating-mcp-clients-in-swift-integrating-model-context-protocol-278d2d7676a9">Creating MCP Clients in Swift (signals the gap - blog post not a product) &rsaquo;</a><a class="src" href="https://artemnovichkov.com/blog/using-model-context-protocol-in-ios-apps">Using MCP in iOS apps walkthrough &rsaquo;</a></div>
+    <div class="tags"><span class="tag">iOS app</span><span class="tag fun">fun 15/15</span><span class="tag">switch low</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div><div class="m"><span class="lab">edge</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div><div class="m"><span class="lab">money</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div></div>
+    <div class="rows"><div class="row fun"><div class="k">fun</div><div class="v">Implementing MCP in Swift natively - tool-calling, session management, streaming, server discovery - is exactly the agent architecture work Matvii loves and there is no template to copy.</div></div><div class="row "><div class="k">why now</div><div class="v">MCP exploded as the standard agent protocol in 2025 and every client is desktop-only or server-side - mobile is a complete blind spot while the ecosystem is still forming.</div></div><div class="row "><div class="k">why you</div><div class="v">MCP fluency + iOS native speed + agent architecture knowledge = ship the canonical iOS MCP client before any framework player notices mobile is missing.</div></div><div class="row "><div class="k">wedge</div><div class="v">SwiftUI app that connects to any MCP server over local network or HTTPS, lists available tools, and lets you invoke them with structured inputs - no Claude Desktop parity needed.</div></div><div class="row "><div class="k">rivals</div><div class="v">Claude Desktop (macOS only), Cursor (desktop IDE only), MCP Inspector (web/CLI only)</div></div></div>
+    <div class="risk"><span class="k">Pre-mortem</span>MCP gets superseded by a better protocol or Apple ships native agent tool-calling that makes the whole transport layer irrelevant.</div><div class="move"><b>First move.</b> Build a minimal Swift MCP client this week using the Swift MCP SDK, demo it on iPhone calling a local tool server, post the video to your content channel.</div><div class="links"><a href="https://jamesrochabrun.medium.com/creating-mcp-clients-in-swift-integrating-model-context-protocol-278d2d7676a9">Creating MCP Clients in Swift (sig &rsaquo;</a><a href="https://artemnovichkov.com/blog/using-model-context-protocol-in-ios-apps">Using MCP in iOS apps walkthrough &rsaquo;</a></div>
   </article>
   <article class="entry">
-    <div class="ehead">
+    <div class="top">
       <div class="rank">2</div>
       <h2 class="hook">Developers shipping Foundation Models agents on iOS 26 are flying blind - no trace viewer, token counter, or eval layer exists and someone is already searching for design partners to build one</h2>
-      <div class="final"><b>21</b><small>25 pos &middot; 4 pen</small></div>
+      <div class="score"><b>21</b><small>25 - 4</small></div>
     </div>
-    <div class="meta"><span class="veh app">app-shippable</span><span class="veh other">other</span><span class="switch">switching: low</span></div>
-    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div></div>
-    <div class="rows"><div class="row"><div class="k">fun</div><div class="v">Building the observability layer for on-device AI agents is novel systems work - instrumentation hooks into FoundationModels sessions, SwiftUI debug overlays, eval harnesses - zero template to copy.</div></div><div class="row"><div class="k">why now</div><div class="v">iOS 26 just shipped the Foundation Models framework and developers are actively building agent features without any visibility into token budget, tool-call chains, or response quality drift.</div></div><div class="row"><div class="k">why you</div><div class="v">You build agent-native iOS apps and feel this pain yourself - you know exactly what signal matters (tool trace, guided-gen schema drift, latency by model layer) vs what is noise.</div></div><div class="row"><div class="k">wedge</div><div class="v">Open-source Swift package: one line to instrument any FoundationModels session, renders a HUD overlay in debug builds showing token budget, tool calls, and latency - ship it and post the walkthrough.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">None obvious - LangSmith, Langfuse, Honeycomb are server-side only with zero Foundation Models integration</div></div></div>
-    <div class="risknote"><span class="k">Pre-mortem</span>Apple ships official Instruments templates for Foundation Models at WWDC 2026 and makes a third-party layer redundant in 9 months.</div><div class="act"><div class="move"><b>First move.</b> Post this week: &#x27;How I debug my on-device iOS agents&#x27; - instrument your current Atelier app build with a custom trace logger, screenshot the token flow, ship the gist as a content piece.</div><a class="src" href="https://www.reddit.com/r/iOSProgramming/comments/1s9h97f/foundation_models_framework_is_anyone_actually/">r/iOSProgramming - developer already seeking design partners for this exact tool &rsaquo;</a><a class="src" href="https://developer.apple.com/videos/play/wwdc2025/301/">WWDC25 - Foundation Models tool calling deep dive (the complexity needing observability) &rsaquo;</a></div>
+    <div class="tags"><span class="tag">iOS app</span><span class="tag">tool</span><span class="tag fun">fun 15/15</span><span class="tag">switch low</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div><div class="m"><span class="lab">edge</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div><div class="m"><span class="lab">money</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div></div>
+    <div class="rows"><div class="row fun"><div class="k">fun</div><div class="v">Building the observability layer for on-device AI agents is novel systems work - instrumentation hooks into FoundationModels sessions, SwiftUI debug overlays, eval harnesses - zero template to copy.</div></div><div class="row "><div class="k">why now</div><div class="v">iOS 26 just shipped the Foundation Models framework and developers are actively building agent features without any visibility into token budget, tool-call chains, or response quality drift.</div></div><div class="row "><div class="k">why you</div><div class="v">You build agent-native iOS apps and feel this pain yourself - you know exactly what signal matters (tool trace, guided-gen schema drift, latency by model layer) vs what is noise.</div></div><div class="row "><div class="k">wedge</div><div class="v">Open-source Swift package: one line to instrument any FoundationModels session, renders a HUD overlay in debug builds showing token budget, tool calls, and latency - ship it and post the walkthrough.</div></div><div class="row "><div class="k">rivals</div><div class="v">None obvious - LangSmith, Langfuse, Honeycomb are server-side only with zero Foundation Models integration</div></div></div>
+    <div class="risk"><span class="k">Pre-mortem</span>Apple ships official Instruments templates for Foundation Models at WWDC 2026 and makes a third-party layer redundant in 9 months.</div><div class="move"><b>First move.</b> Post this week: &#x27;How I debug my on-device iOS agents&#x27; - instrument your current Atelier app build with a custom trace logger, screenshot the token flow, ship the gist as a content piece.</div><div class="links"><a href="https://www.reddit.com/r/iOSProgramming/comments/1s9h97f/foundation_models_framework_is_anyone_actually/">r/iOSProgramming - developer alrea &rsaquo;</a><a href="https://developer.apple.com/videos/play/wwdc2025/301/">WWDC25 - Foundation Models tool ca &rsaquo;</a></div>
   </article>
   <article class="entry">
-    <div class="ehead">
+    <div class="top">
       <div class="rank">3</div>
       <h2 class="hook">SuperWhisper iOS is &#x27;barely usable&#x27; and Wispr Flow breaks keyboard workflows - the on-device voice-to-action agent gap on iPhone is wide open after iOS 26</h2>
-      <div class="final"><b>19</b><small>27 pos &middot; 8 pen</small></div>
+      <div class="score"><b>19</b><small>27 - 8</small></div>
     </div>
-    <div class="meta"><span class="veh app">app-shippable</span><span class="switch">switching: med</span></div>
-    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div></div>
-    <div class="rows"><div class="row"><div class="k">fun</div><div class="v">The agent routing problem is genuinely interesting - real-time speech, Foundation Models intent classification, iOS URL-scheme routing to any app, all on-device with zero latency.</div></div><div class="row"><div class="k">why now</div><div class="v">iOS 26 Foundation Models + improved Speech framework = first time a third party can build a Siri-quality voice agent without a server, while Apple still has not fixed Siri.</div></div><div class="row"><div class="k">why you</div><div class="v">On-device agent architecture fluency + iOS native speed + your own daily friction with this problem = build it for yourself and ship in 2 weeks.</div></div><div class="row"><div class="k">wedge</div><div class="v">Hold button, speak a thought, Foundation Models classifies intent (task/note/idea/question), routes to Reminders/Notes/Obsidian/AI via URL scheme - zero server, zero subscription needed.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">SuperWhisper (broken iOS experience), Wispr Flow (broken iOS keyboard), Siri Shortcuts (no agent routing)</div></div></div>
-    <div class="risknote"><span class="k">Pre-mortem</span>iOS API restrictions on background audio and keyboard extensions make the experience feel clunky vs the macOS version, driving churn before word-of-mouth builds.</div><div class="act"><div class="move"><b>First move.</b> Build a 50-line iOS prototype: Speech recognition -&gt; Foundation Models intent classifier -&gt; URL scheme router for 3 apps. Record the demo and post it.</div><a class="src" href="https://www.getvoibe.com/resources/wispr-flow-review/">Wispr Flow iOS review - iOS limitations officially documented &rsaquo;</a><a class="src" href="https://www.reddit.com/r/macapps/comments/1hen155/macwhisper_dictation_completely_underrated/">SuperWhisper &#x27;iOS app is barely useable&#x27; thread &rsaquo;</a></div>
+    <div class="tags"><span class="tag">iOS app</span><span class="tag fun">fun 13/15</span><span class="tag">switch med</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div><div class="m"><span class="lab">edge</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div><div class="m"><span class="lab">money</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div></div>
+    <div class="rows"><div class="row fun"><div class="k">fun</div><div class="v">The agent routing problem is genuinely interesting - real-time speech, Foundation Models intent classification, iOS URL-scheme routing to any app, all on-device with zero latency.</div></div><div class="row "><div class="k">why now</div><div class="v">iOS 26 Foundation Models + improved Speech framework = first time a third party can build a Siri-quality voice agent without a server, while Apple still has not fixed Siri.</div></div><div class="row "><div class="k">why you</div><div class="v">On-device agent architecture fluency + iOS native speed + your own daily friction with this problem = build it for yourself and ship in 2 weeks.</div></div><div class="row "><div class="k">wedge</div><div class="v">Hold button, speak a thought, Foundation Models classifies intent (task/note/idea/question), routes to Reminders/Notes/Obsidian/AI via URL scheme - zero server, zero subscription needed.</div></div><div class="row "><div class="k">rivals</div><div class="v">SuperWhisper (broken iOS experience), Wispr Flow (broken iOS keyboard), Siri Shortcuts (no agent routing)</div></div></div>
+    <div class="risk"><span class="k">Pre-mortem</span>iOS API restrictions on background audio and keyboard extensions make the experience feel clunky vs the macOS version, driving churn before word-of-mouth builds.</div><div class="move"><b>First move.</b> Build a 50-line iOS prototype: Speech recognition -&gt; Foundation Models intent classifier -&gt; URL scheme router for 3 apps. Record the demo and post it.</div><div class="links"><a href="https://www.getvoibe.com/resources/wispr-flow-review/">Wispr Flow iOS review - iOS limita &rsaquo;</a><a href="https://www.reddit.com/r/macapps/comments/1hen155/macwhisper_dictation_completely_underrated/">SuperWhisper &#x27;iOS app is barely us &rsaquo;</a></div>
   </article>
   <article class="entry">
-    <div class="ehead">
+    <div class="top">
       <div class="rank">4</div>
       <h2 class="hook">Craft and Obsidian users want AI that answers questions over their own note library on-device - every existing solution either phones home or runs only on desktop</h2>
-      <div class="final"><b>17</b><small>25 pos &middot; 8 pen</small></div>
+      <div class="score"><b>17</b><small>25 - 8</small></div>
     </div>
-    <div class="meta"><span class="veh app">app-shippable</span><span class="switch">switching: med</span></div>
-    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div></div>
-    <div class="rows"><div class="row"><div class="k">fun</div><div class="v">On-device RAG on iOS with Foundation Models is a hard systems problem - chunking, on-device embedding, retrieval, context assembly within 4096 tokens - all offline with no server.</div></div><div class="row"><div class="k">why now</div><div class="v">iOS 26 Foundation Models makes on-device text processing viable and Craft users are already asking &#x27;why can&#x27;t AI query my own library?&#x27; with no answer yet.</div></div><div class="row"><div class="k">why you</div><div class="v">Agent architecture fluency means you design the chunking and retrieval pipeline properly - not just wrap GPT-4 with a file picker.</div></div><div class="row"><div class="k">wedge</div><div class="v">Import a folder of Markdown files, Foundation Models indexes them on-device, chat interface answers questions citing source notes - works offline, no iCloud sync required for MVP.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">Notion AI (web-only, your data leaves device), Craft AI (no RAG per user reports), Obsidian Copilot (desktop plugin only)</div></div></div>
-    <div class="risknote"><span class="k">Pre-mortem</span>On-device embedding is too slow on non-Pro iPhones, making the indexing step a dealbreaker for the majority of users who surface the need.</div><div class="act"><div class="move"><b>First move.</b> Post &#x27;Would you pay for on-device AI over your Obsidian/Craft vault with zero server?&#x27; to r/ObsidianMD and r/CraftDocs this week and measure thread response.</div><a class="src" href="https://www.reddit.com/r/CraftDocs/comments/1ocdhuc/craft_ai_functionality/">Craft user asking for RAG over own library (verbatim from search snippet) &rsaquo;</a><a class="src" href="https://www.reddit.com/r/iOSProgramming/comments/1qjx0v2/ondevice_apple_intelligence_in_production_how_i/">Foundation Models 4096-token limit discussion (the constraint to engineer around) &rsaquo;</a></div>
+    <div class="tags"><span class="tag">iOS app</span><span class="tag fun">fun 14/15</span><span class="tag">switch med</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div><div class="m"><span class="lab">edge</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div><div class="m"><span class="lab">money</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div></div>
+    <div class="rows"><div class="row fun"><div class="k">fun</div><div class="v">On-device RAG on iOS with Foundation Models is a hard systems problem - chunking, on-device embedding, retrieval, context assembly within 4096 tokens - all offline with no server.</div></div><div class="row "><div class="k">why now</div><div class="v">iOS 26 Foundation Models makes on-device text processing viable and Craft users are already asking &#x27;why can&#x27;t AI query my own library?&#x27; with no answer yet.</div></div><div class="row "><div class="k">why you</div><div class="v">Agent architecture fluency means you design the chunking and retrieval pipeline properly - not just wrap GPT-4 with a file picker.</div></div><div class="row "><div class="k">wedge</div><div class="v">Import a folder of Markdown files, Foundation Models indexes them on-device, chat interface answers questions citing source notes - works offline, no iCloud sync required for MVP.</div></div><div class="row "><div class="k">rivals</div><div class="v">Notion AI (web-only, your data leaves device), Craft AI (no RAG per user reports), Obsidian Copilot (desktop plugin only)</div></div></div>
+    <div class="risk"><span class="k">Pre-mortem</span>On-device embedding is too slow on non-Pro iPhones, making the indexing step a dealbreaker for the majority of users who surface the need.</div><div class="move"><b>First move.</b> Post &#x27;Would you pay for on-device AI over your Obsidian/Craft vault with zero server?&#x27; to r/ObsidianMD and r/CraftDocs this week and measure thread response.</div><div class="links"><a href="https://www.reddit.com/r/CraftDocs/comments/1ocdhuc/craft_ai_functionality/">Craft user asking for RAG over own &rsaquo;</a><a href="https://www.reddit.com/r/iOSProgramming/comments/1qjx0v2/ondevice_apple_intelligence_in_production_how_i/">Foundation Models 4096-token limit &rsaquo;</a></div>
   </article>
   <article class="entry">
-    <div class="ehead">
+    <div class="top">
       <div class="rank">5</div>
       <h2 class="hook">Draw Things has a working gRPC server CLI but no iOS companion client - power users remote-render from a Mac and control it via command line</h2>
-      <div class="final"><b>14</b><small>20 pos &middot; 6 pen</small></div>
+      <div class="score"><b>14</b><small>20 - 6</small></div>
     </div>
-    <div class="meta"><span class="veh app">app-shippable</span><span class="switch">switching: low</span></div>
-    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">edge</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">money</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg"></span><span class="seg"></span><span class="seg"></span></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span><span class="seg on"></span></div></div></div>
-    <div class="rows"><div class="row"><div class="k">fun</div><div class="v">The gRPC plumbing is straightforward but designing the generation queue UI - prompt history, model switcher, live preview from anywhere in the house - is worth doing with taste.</div></div><div class="row"><div class="k">why now</div><div class="v">Draw Things recently shipped MediaGenerationKit and a proper gRPC server CLI, making third-party iOS clients viable for the first time - and the window before an official client ships is now.</div></div><div class="row"><div class="k">why you</div><div class="v">Native iOS speed means you ship before any web-based control panel appears, and your design taste produces a generation queue UI that does not look like a settings dump.</div></div><div class="row"><div class="k">wedge</div><div class="v">Connect to Draw Things gRPC server on local network, submit prompt and settings, watch live generation progress, save to Photos - just the remote-control loop, nothing more.</div></div><div class="row"><div class="k">rivals</div><div class="v muted">None obvious - no existing iOS remote clients for Draw Things</div></div></div>
-    <div class="risknote"><span class="k">Pre-mortem</span>Draw Things ships its own official companion app before you establish a user base - the developer is clearly capable.</div><div class="act"><div class="move"><b>First move.</b> Spin up Draw Things gRPC server, write a 30-line Swift gRPC client that submits one prompt and returns the image - validate the protocol works from iPhone this week.</div><a class="src" href="https://www.youtube.com/watch?v=XJEBpYboHdA">Draw Things gRPC server CLI demo (proves infrastructure exists) &rsaquo;</a><a class="src" href="https://apps.apple.com/us/app/draw-things-offline-ai-art/id6444050820">App Store - user review requesting a local network client app &rsaquo;</a></div>
+    <div class="tags"><span class="tag">iOS app</span><span class="tag fun">fun 9/15</span><span class="tag">switch low</span></div>
+    <div class="meters"><div class="m"><span class="lab">pain</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div><div class="m"><span class="lab">edge</span><div class="bar"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div><div class="m"><span class="lab">money</span><div class="bar"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div></div><div class="m"><span class="lab">incumbent</span><div class="bar"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div></div>
+    <div class="rows"><div class="row fun"><div class="k">fun</div><div class="v">The gRPC plumbing is straightforward but designing the generation queue UI - prompt history, model switcher, live preview from anywhere in the house - is worth doing with taste.</div></div><div class="row "><div class="k">why now</div><div class="v">Draw Things recently shipped MediaGenerationKit and a proper gRPC server CLI, making third-party iOS clients viable for the first time - and the window before an official client ships is now.</div></div><div class="row "><div class="k">why you</div><div class="v">Native iOS speed means you ship before any web-based control panel appears, and your design taste produces a generation queue UI that does not look like a settings dump.</div></div><div class="row "><div class="k">wedge</div><div class="v">Connect to Draw Things gRPC server on local network, submit prompt and settings, watch live generation progress, save to Photos - just the remote-control loop, nothing more.</div></div><div class="row "><div class="k">rivals</div><div class="v">None obvious - no existing iOS remote clients for Draw Things</div></div></div>
+    <div class="risk"><span class="k">Pre-mortem</span>Draw Things ships its own official companion app before you establish a user base - the developer is clearly capable.</div><div class="move"><b>First move.</b> Spin up Draw Things gRPC server, write a 30-line Swift gRPC client that submits one prompt and returns the image - validate the protocol works from iPhone this week.</div><div class="links"><a href="https://www.youtube.com/watch?v=XJEBpYboHdA">Draw Things gRPC server CLI demo ( &rsaquo;</a><a href="https://apps.apple.com/us/app/draw-things-offline-ai-art/id6444050820">App Store - user review requesting &rsaquo;</a></div>
   </article>
-  <footer>Fun gate (run first): each entry cleared a &gt;=6/15 floor on domain affinity + problem interestingness + personal scratch. Boring-but-winnable rebuilds were rejected. Then ranked by score = positives minus penalties. Reddit evidence is search-snippet level; other sources verbatim.</footer>
+  <footer>Fun gate runs first: each entry cleared a floor on domain affinity, problem interestingness, and personal scratch. Boring-but-winnable rebuilds were rejected. Survivors ranked by positives minus penalties.</footer>
 </div>
 </body>
 </html>
